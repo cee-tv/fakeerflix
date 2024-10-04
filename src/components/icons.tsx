@@ -29,8 +29,7 @@ export const Icons = {
   volumeMute: VolumeX,
   // logo: (props: IconProps) => (
   logo: ({ ...props }: LucideProps) => (
-   <svg
-   <svg
+    <svg
       aria-hidden="true"
       focusable="false"
       role="img"
