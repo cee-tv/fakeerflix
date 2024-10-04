@@ -1,33 +1,19 @@
+"use client";
+
 import * as React from "react";
-import { useEffect, useState } from "react"
-import { Link, useLocation } from "react-router-dom"
-import Toast from "../Toast/Toast"
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
-const Profiles = () => {
-  const [photoURL, setPhotoURL] = useState(null)
-  const [name, setName] = useState(null)
-  const [email, setEmail] = useState(null)
-  const [isVisible, setIsVisible] = useState(false)
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-  useEffect(() => {
-    window.scrollTo(0,0)
-    const userData = JSON.parse(localStorage.getItem('userData'))
-    const isLoggedFirst = JSON.parse(localStorage.getItem('loggedUser'))
-
-    setPhotoURL(userData?.photoURL)
-    setName(userData?.displayName)
-    setEmail(userData?.email)
-
-    if(isLoggedFirst){
-      setIsVisible(true)
-    }
-
-    const timeout = setTimeout(() => {
-      setIsVisible(false)
-    }, 2000)
-
-    return () => clearTimeout(timeout)
-  }, [])
+export function ModeToggle() {
+  const { setTheme } = useTheme();
 
   return (
     <div className="min-h-screen">
